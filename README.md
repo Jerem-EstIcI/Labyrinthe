@@ -1,1 +1,23 @@
 # Labyrinthe
+
+Le but est de creer un labyrinthe en utilisant des élèments vu en cours de termainle comme les Pile,File,Graphe etc...
+Une fois crée le but est de trouvé le chemin le plus ourt pour sortir du labyrinthe.
+Tout ca affiché dans une fenêtre tkinter.
+
+## Roadmap
+
+### Creer le Labyrinthe
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+
+### Recherche du plus court chemin dans le graphe
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]

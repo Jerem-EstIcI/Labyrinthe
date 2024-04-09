@@ -11,6 +11,7 @@ Tout ca affiché dans une fenêtre tkinter.
 #### Tkinter
 - [ ] Afficher une page
 - [ ] Afficher les murs
+- [ ] Afficher l'entrée/sortie
 #### Mur
 - [ ] Creer des murs
 - [ ] Définir une entrée et une sortie

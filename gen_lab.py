@@ -3,10 +3,16 @@ import time
 
 class GenLab:
     def __init__(self, dim):
-        self.dim = dim
-        self.tab = self._creer_lab()
+        self.dim = dim 
+        self.tab = self.creer_lab()
 
-    def _creer_lab(self):
+    def creer_lab(self):
+        """
+        paramètre:
+        - dim : dimension du labyrinthe
+        renvoie:
+        - tab : grille comportant le labyrinthe non resolvable avec : 0 les chemins, 1 les murs, 2 l'entrée, 3 la sortie
+        """
         tab = [[1 for ligne in range(25)] for colonne in range(25)]
         for i in range(len(tab)):
             for j in range(len(tab)):
@@ -16,6 +22,13 @@ class GenLab:
         return tab
 
     def dessine_lab(self):
+        """
+        paramètre:
+        - dim : dimension du labyrinthe
+        - tab : grille comportant le labyrinthe non resolvable avec : 0 les chemins, 1 les murs, 2 l'entrée, 3 la sortie
+        renvoie:
+        - tab : grille comportant le labyrinthe resolvable avec : 0 les chemins, 1 les murs, 2 l'entrée, 3 la sortie
+        """
         chemin = self.tab[0][0]
         arrive = self.tab[self.dim - 1][self.dim - 1]
         i = 0
@@ -39,5 +52,5 @@ class GenLab:
             chemin = self.tab[i][j]
         end = time.time()
         print(self.tab, i, j)
-        print("fait en", end - start, "seconde")
+        print("labyrinthe généré en", end - start, "secondes")
         return self.tab

@@ -21,6 +21,7 @@ Tout ça affichait dans une fenêtre Tkinter. \
 - [x] Casser certains murs de façons aléatoires.
 - [x] Casser des murs pour atteindre la sortie en passant le plus possible par les murs déjà cassés.
 - [ ] Faire plusieurs sorties possibles [Bonus].
+- [x] Avoir le temps de création du labyrinthe [Bonus].
 ### Recherche du plus court chemin dans le graphe :
 - [ ] Dire le plus court chemin avec les noms ou valeurs de points traversé.
 - [ ] Afficher le plus court chemin

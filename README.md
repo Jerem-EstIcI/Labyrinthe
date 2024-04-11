@@ -42,7 +42,7 @@ où les "1" correspondent à un mur (représenté par du rouge) et les "0" à un
 - plus de difficulté à le représenter facilement le labyrinthe a la main.
 
 
-- **Soit par un ou des dictionnaires**
+- **Soit par un ou des dictionnaires** \
 `lab = {"A1": 0, "A2": 1, "A3": 1, "A4": 0, "A5": 0, "A6": 1, "A7": 1, "A8": 0, "A9": 1, "A10": 1, "A11": 1, "A12": 1, "A13": 0, "A14": 0, "A15": 1, "A16": 1, "A17": 1, "A18": 1, "A19": 0, "A20": 0, "A21": 0, "A22": 1, "A23": 1, "A24": 0, "A25": 1} etc` \
 ![Image Labyrinthe dictionnaire](/img/exemple_lab_dictio.png "Labyrinthe avec dictionnaire").
 

@@ -29,10 +29,8 @@ Tout ca affiché dans une fenêtre tkinter.
 ## Informations
 **Les murs peuvent être définit de la manière suivante :**
 
-- **Soit par des listes**
-<br>
-lab=`[0,1,1,0,0,1,1,0,1,1,1,1,0,0,1,1,1,1,0,0,0,1,1,0,1],[etc...]`
-<br>
+- **Soit par des listes** \
+lab=`[0,1,1,0,0,1,1,0,1,1,1,1,0,0,1,1,1,1,0,0,0,1,1,0,1],[etc...]` \
 ![Image Labyrinthe liste](/img/exemple_lab_liste.png "Labyrinthe avec liste").
 
 

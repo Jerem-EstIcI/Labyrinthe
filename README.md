@@ -17,9 +17,9 @@ Tout ça affichait dans une fenêtre Tkinter. \
 - [ ] Afficher les autres chemins possibles avec leurs distances [Bonus].
 #### Mur :
 - [x] Créer des murs sur toutes les cases du tableau de 25x25.
-- [ ] Définir une entrée et une sortie.
+- [x] Définir une entrée et une sortie.
 - [x] Casser certains murs de façons aléatoires.
-- [ ] Casser des murs pour atteindre la sortie en passant le plus possible par les murs déjà cassés.
+- [x] Casser des murs pour atteindre la sortie en passant le plus possible par les murs déjà cassés.
 - [ ] Faire plusieurs sorties possibles [Bonus].
 ### Recherche du plus court chemin dans le graphe :
 - [ ] Dire le plus court chemin avec les noms ou valeurs de points traversé.

@@ -10,15 +10,15 @@ Tout ça affichait dans une fenêtre Tkinter. \
 
 #### Tkinter :
 - [x] Afficher une page vierge.
-- [ ] Faire un cadre où se trouve le labyrinthe.
-- [ ] Afficher les murs.
+- [x] Faire un cadre où se trouve le labyrinthe.
+- [x] Afficher les murs.
 - [ ] Afficher l'entrée/sortie.
 - [ ] Afficher le plus court chemin avec la distance.
 - [ ] Afficher les autres chemins possibles avec leurs distances [Bonus].
 #### Mur :
-- [ ] Créer des murs sur toutes les cases du tableau de 25x25.
+- [x] Créer des murs sur toutes les cases du tableau de 25x25.
 - [ ] Définir une entrée et une sortie.
-- [ ] Casser certains murs de façons aléatoires.
+- [x] Casser certains murs de façons aléatoires.
 - [ ] Casser des murs pour atteindre la sortie en passant le plus possible par les murs déjà cassés.
 - [ ] Faire plusieurs sorties possibles [Bonus].
 ### Recherche du plus court chemin dans le graphe :

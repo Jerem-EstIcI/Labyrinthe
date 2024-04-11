@@ -36,8 +36,10 @@ Tout ca affiché dans une fenêtre tkinter.
 ![Image Labyrinthe liste](/img/exemple_lab_liste.png "Labyrinthe avec liste"). \
 où les "1" correspondent a un mur (représenté par du rouge) et les "0" à un chemin
 - **Avantages**
+- Plus de facilité a le programmer
 
 - **Désavantages**
+- plus de difficulté a le représenter facilement le labyrinthe a la main
 
 
 - **Soit par un ou des dictionnaires**
@@ -45,8 +47,8 @@ où les "1" correspondent a un mur (représenté par du rouge) et les "0" à un 
 ![Image Labyrinthe dictionnaire](/img/exemple_lab_dictio.png "Labyrinthe avec dictionnaire").
 
 - **Avantages**
-- Permet de visusalisé facilement a quoi ressemble le labyrinthe
-- Pour la recherche du plus court chemin permet de voir rapidement quelle chemin a était prit 
+- Permet de visusalisé facilement a quoi ressemble le labyrinthe a la main
+- Pour la recherche du plus court chemin permet de voir rapidement quelle chemin a était prit a la main
 
 - **Désavantages**
 

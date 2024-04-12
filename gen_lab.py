@@ -11,15 +11,15 @@ class GenLab:
         paramètre:
         - dim : dimension du labyrinthe
         renvoie:
-        - tab : grille comportant le labyrinthe non resolvable avec : 0 les chemins, 1 les murs, 2 l'entrée, 3 la sortie
+        - lab : grille comportant le labyrinthe non resolvable avec : 0 les chemins, 1 les murs, 2 l'entrée, 3 la sortie
         """
-        tab = [[1 for ligne in range(25)] for colonne in range(25)]
-        for i in range(len(tab)):
-            for j in range(len(tab)):
-                tab[i][j] = randint(0, 1)
-        tab[0][0] = 2  # début
-        tab[self.dim - 1][self.dim - 1] = 3  # fin
-        return tab
+        lab = [[1 for ligne in range(self.dim)] for colonne in range(self.dim)]
+        for i in range(len(lab)):
+            for j in range(len(lab)):
+                lab[i][j] = randint(0, 1)
+        lab[0][0] = 2  # début
+        lab[self.dim - 1][self.dim - 1] = 3  # fin
+        return lab
 
     def dessine_lab(self):
         """

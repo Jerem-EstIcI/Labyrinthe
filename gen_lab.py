@@ -84,7 +84,5 @@ class GenLab:
                     # cas pour mettre un mur si il est entouré par des chemins 
                     elif self.tab[i + 1][j] == 0 and self.tab[i - 1][j] == 0 and self.tab[i][j + 1] == 0 and self.tab[i][j - 1] == 0 and self.tab[i + 1][j + 1] == 0 and self.tab[i - 1][j + 1] == 0 and self.tab[i - 1][j - 1] == 0 and self.tab[i - 1][j - 1] == 0:
                         self.tab[i][j] = 1
-                    
-                    elif self.tab[]
 
         return self.tab

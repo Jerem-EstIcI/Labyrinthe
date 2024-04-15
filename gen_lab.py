@@ -21,7 +21,10 @@ class GenLab:
                 if i == 0 or j == 0 or j == self.dim-1 or i == self.dim-1:
                     lab[i][j]=1
                 else:
-                    lab[i][j] = randint(0, 1)
+                    #lab[i][j] = randint(0, 1)
+                    k=randint(0,100)
+                    if k>52:
+                        lab[i][j]=0
         lab[0][0] = 2  # début
         lab[self.dim - 1][self.dim - 1] = 3  # fin
         return lab

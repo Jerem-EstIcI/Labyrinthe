@@ -1,8 +1,8 @@
 from tkinter import *
 from gen_lab import *
 
-gen = GenLab(25) # int : dimension du labyrinthe
-gen.ameliorer_lab()
+gen = GenLab(25) # GenLab(dimension)
+#gen.ameliorer_lab()
 labyrinthe = gen.dessine_lab()
 
 

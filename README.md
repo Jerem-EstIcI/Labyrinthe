@@ -38,9 +38,3 @@ Tout ça affichait dans une fenêtre Tkinter.
 `lab=[0,1,1,0,0,1,1,0,1,1,1,1,0,0,1,1,1,1,0,0,0,1,1,0,1],[etc...]` \
 ![Image Labyrinthe liste](/img/exemple_lab_liste.png "Labyrinthe avec liste"). \
 où les "1" correspondent à un mur (représenté par du rouge),"0" à un chemin,"2" l'entrée et "3" la sortie. 
-
-- Permet de visualiser facilement à quoi ressemble le labyrinthe à la main.
-- Pour la recherche du plus court chemin permet de voir rapidement quel chemin à était pris a la main.
-
-- **Désavantages**
-- Plus de difficulté à le programmer en théorie.

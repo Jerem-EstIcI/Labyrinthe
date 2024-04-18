@@ -1,23 +1,21 @@
 from tkinter import *
 from gen_lab import *
 
-
-#print(dir(gen))
-#help(gen.creer_lab)
-#help(gen.dessine_lab)
-
-
-
 # Création de la fenêtre tkinter
 app = Tk()
 app.title("Labyrinthe")
 app.geometry("800x550")
 app.resizable(False, False)
 
+# Création d'un cadre pour contenir les boutons
+button_frame = Frame(app)
+button_frame.pack(side=TOP)
+
+# Création du canevas
 canvas = Canvas(app, width=0, height=0)  # Initialiser le canevas avec une taille arbitraire
 canvas.pack()
 
-def gen_lab():
+def affiche_lab():
     gen = GenLab(25) # GenLab(dimension)
     labyrinthe = gen.dessine_lab()
 
@@ -36,11 +34,12 @@ def gen_lab():
             else:
                 canvas.create_rectangle(j * 20, i * 20, (j + 1) * 20, (i + 1) * 20, fill="white")
 
-gen_button = Button(app, text="Générer Labyrinthe", command=gen_lab)
-gen_button.place(x=0, y=0)
-gen_button.configure(relief="solid", bd=2)
+
+gen_button = Button(button_frame, text="Générer Labyrinthe", command=affiche_lab)
+gen_button.pack(side=LEFT, padx=5, pady=5)
+
+res_button = Button(button_frame, text="Résoudre Labyrinthe", command=affiche_lab)
+res_button.pack(side=LEFT, padx=5, pady=5)
 
 # Lancer la boucle principale de tkinter
 app.mainloop()
-
-"""def resolve avec backtracking """

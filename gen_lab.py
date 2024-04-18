@@ -58,34 +58,15 @@ class GenLab:
             else:                                               # sinon prochaine case verticale est l'arrivée alors on avance a la prochaine case
                 j += 1
             chemin = self.tab[i][j]
+        
+        i = 0
+        j = 0
+        for i in range(len(self.tab)):
+            for j in range(len(self.tab)):
+                if i+1 < self.dim-1 and i-1 > 0 and j+1 < self.dim-1 and j-1 > 0:
+                    if self.tab[i+1][j]==0 and self.tab[i-1][j]==0 and self.tab[i][j+1]==0 and self.tab[i][j-1]==0:
+                        self.tab[i][j]==0
         end = time.time()
         print(self.tab, i, j)
         print("labyrinthe généré en", end - start, "secondes")
-        return self.tab
-    
-    def ameliorer_lab(self):
-        """
-        paramètre:
-        - dim : dimension du labyrinthe
-        - tab : grille comportant le labyrinthe resolvable ou non avec : 0 les chemins, 1 les murs, 2 l'entrée, 3 la sortie
-        renvoie:
-        - tab : grille comportant le labyrinthe sans les chemins et murs inutiles resolvable ou non avec : 0 les chemins, 1 les murs, 2 l'entrée, 3 la sortie
-        """
-        i=0
-        j=0
-        for i in range(len(self.tab)):
-            for j in range(len(self.tab[i])):
-
-                if i - 1 >= 0 and i + 1 < self.dim - 1 and j - 1 >= 0 and j + 1 < self.dim - 1: 
-                    # cas pour enlever les murs entouré des chemins
-                    if self.tab[i + 1][j] == 1 and self.tab[i - 1][j] == 1 and self.tab[i][j + 1] == 1 and self.tab[i][j - 1] == 1: 
-                        self.tab[i][j] = 0
-                    # cas pour enlever les murs entouré des chemins
-                    elif self.tab[i + 1][j] == 0 and self.tab[i - 1][j] == 0 and self.tab[i][j + 1] == 0 and self.tab[i][j - 1] == 0 and self.tab[i + 1][j + 1] == 0 and self.tab[i - 1][j + 1] == 0 and self.tab[i - 1][j - 1] == 0 and self.tab[i - 1][j - 1] == 0: 
-                        self.tab[i][j] = 0
-
-                    # cas pour mettre un mur si il est entouré par des chemins 
-                    elif self.tab[i + 1][j] == 0 and self.tab[i - 1][j] == 0 and self.tab[i][j + 1] == 0 and self.tab[i][j - 1] == 0 and self.tab[i + 1][j + 1] == 0 and self.tab[i - 1][j + 1] == 0 and self.tab[i - 1][j - 1] == 0 and self.tab[i - 1][j - 1] == 0:
-                        self.tab[i][j] = 1
-
         return self.tab

@@ -4,7 +4,12 @@ import time
 class GenLab:
     def __init__(self, dim):
         self.dim = dim 
+        self.zonedess = self.dim - 1
         self.tab = self.creer_lab()
+
+
+    # --------------------------------------------------------------------------------------------------------------------------------------------------------------- #
+
 
     def creer_lab(self):
         """
@@ -13,16 +18,29 @@ class GenLab:
         renvoie:
         - lab : grille comportant le labyrinthe non resolvable avec : 0 les chemins, 1 les murs, 2 l'entrée, 3 la sortie
         """
-        lab = [[1 for _ in range(self.dim)] for _ in range(self.dim)]
+
+        ### ------------------------------------------###
+        # Génération du labyrinthe de manière aléatoire #
+        ### ------------------------------------------###
+
+        # création d'une grille carré de la dimension souhaité 
+        lab = [[1 for _ in range(self.dim)] for _ in range(self.dim)] 
         
-        for i in range(1, self.dim - 1):
-            for j in range(1, self.dim - 1):
+        # Génération aléaoire des chemins/murs dans la grille
+        for ligne_ini in range(1, self.dim - 1):
+            for colonne_ini in range(1, self.dim - 1):
                 if randint(0, 100) > 52:
-                    lab[i][j] = 0
+                    lab[ligne_ini][colonne_ini] = 0
         
-        lab[0][0] = 2  # début
-        lab[self.dim - 1][self.dim - 1] = 3  # fin
+        # début en haut a gauche
+        lab[0][0] = 2  
+        # fin en bas a droite
+        lab[self.dim - 1][self.dim - 1] = 3  
         return lab
+
+
+    # --------------------------------------------------------------------------------------------------------------------------------------------------------------- #
+
 
     def dessine_lab(self):
         """
@@ -32,73 +50,109 @@ class GenLab:
         renvoie:
         - tab : grille comportant le labyrinthe resolvable avec : 0 les chemins, 1 les murs, 2 l'entrée, 3 la sortie
         """
-        chemin = self.tab[0][0]
-        arrivee = self.tab[self.dim - 1][self.dim - 1]
-        i, j = 0, 0
-        start = time.time()
 
-        while chemin != arrivee:
-            if i + 1 < self.dim and self.tab[i + 1][j] == 0:
-                i += 1
-            elif j + 1 < self.dim and self.tab[i][j + 1] == 0:
-                j += 1
-            elif j + 1 < self.dim and self.tab[i][j + 1] == 1:
-                self.tab[i][j + 1] = 0
-                j += 1
-            elif i + 1 < self.dim and self.tab[i + 1][j] == 1:
-                self.tab[i + 1][j] = 0
-                i += 1
-            elif i + 1 < self.dim and self.tab[i + 1][j] == 3:
-                i += 1
-            else:
-                j += 1
-            chemin = self.tab[i][j]
-        print(self.tab, i, j)
-        i, j = 0, 0
-        nb_mur_change = 0
-        nb_chemin_change = 0
-        for i in range(1, self.dim - 1):
-            for j in range(1, self.dim - 1):
+        début_chrono = time.time() 
+
+        ### ------------------------------------------------------------------------- ###
+        # Recherche / Création d'au moins 1 chemin possible pour résoudre le labyrinthe #
+        ### ------------------------------------------------------------------------- ###
+
+        arrivee = self.tab[self.zonedess][self.zonedess]
+        ligne, colonne = 0, 0
+
+        # Tant qu'on est pas arrivé sur la case d'arrivé 
+        while self.tab[ligne][colonne] != arrivee:
+            # si la prochaine case horizontale est un chemin alors on avance a la prochaine case   
+            if ligne + 1 < self.dim and self.tab[ligne + 1][colonne] == 0:       
+                ligne += 1
+            # sinon si la prochaine case verticale est un chemin alors on avance a la prochaine case
+            elif colonne + 1 < self.dim and self.tab[ligne][colonne + 1] == 0: 
+                colonne += 1
+            # sinon si la prochaine case verticale est un murs on le remplace par un chemin et on avance a la prochaine case    
+            elif colonne + 1 < self.dim and self.tab[ligne][colonne + 1] == 1: 
+                self.tab[ligne][colonne + 1] = 0
+                colonne += 1
+            # sinon si la prochaine case horizontale est un murs on le remplace par un chemin et on avance a la prochaine case
+            elif ligne + 1 < self.dim and self.tab[ligne + 1][colonne] == 1: 
+                self.tab[ligne + 1][colonne] = 0
+                ligne += 1
+            # sinon si la prochaine case horizontale est l'arrivée alors on avance a la prochaine case
+            elif ligne + 1 < self.dim and self.tab[ligne + 1][colonne] == 3: 
+                ligne += 1
+            # sinon prochaine case verticale est l'arrivée alors on avance a la prochaine case
+            else: 
+                colonne += 1
+        
+        print(self.tab, ligne, colonne) # débug
+
+
+        ### -------------------------------------------------------------- ###
+        # Amélioration du labyrinthe sans empêcher de résoudre le labyrinthe #
+        ### -------------------------------------------------------------- ###
+
+        nb_mur_change = 0 # debug
+        nb_chemin_change = 0 # debug
+
+        # Pour les lignes(i) et colonnes (j) de la grille précédemment généré sans compter les contours
+        for i in range(1, self.zonedess):
+            for j in range(1, self.zonedess):
+                # Pour les cas où on est sur un mur
                 if self.tab[i][j] == 1:
+                    # Si le mur est entouré de chemin on le change en chemin
                     if self.est_entoure_de_chemins(i, j):
                         self.tab[i][j] = 0
-                        nb_chemin_change += 1
+                        nb_chemin_change += 1 # debug
+                # Pour les cas où on est sur un chemin
                 elif self.tab[i][j] == 0:
+                    # Si le chemin est entouré de murs on le change en mur
                     if self.est_entoure_de_murs(i, j):
                         self.tab[i][j] = 1
-                        nb_mur_change += 1
-        print(self.tab)
-        for i in range(len(self.tab)):
-            for j in range(len(self.tab)):
-                if self.tab[i][j]==0:
-                    if self.tab[i+1][j]==1 and self.tab[i-1][j]==1 and self.tab[i][j+1]==1 and self.tab[i][j-1]==1:
-                        if self.tab[i+2]==0 and i+2<self.dim:
-                            self.tab[i+1][j]=0
-                            nb_mur_change+=1
-                        elif self.tab[j+2]==0 and j+2<self.dim:
-                            self.tab[i][j+1]=0
-                            nb_mur_change+=1
-                        else:
-                            self.tab[i+1][j]=0
-                            nb_mur_change+=1
+                        nb_mur_change += 1 # debug
+                    # Sinon si en haut en bas et a droite il y a des murs on remplace celui de devant par un chemin
+                    elif self.tab[i+1][j]==1 and self.tab[i][j-1]==1 and self.tab[i][j+1]==1:
+                        self.tab[i+1][j]=0
+                        nb_mur_change+=1 # debug 
 
-        end = time.time()
-        print(nb_mur_change, "mur(s) changé(s) en chemin et", nb_chemin_change, "chemin(s) changé(s) en mur")
-        print(self.tab)
-        print("labyrinthe généré en", end - start, "secondes")
+        print(nb_mur_change, "mur(s) changé(s) en chemin et", nb_chemin_change, "chemin(s) changé(s) en mur") # débug
+        print(self.tab) # débug
+
+        fin_chrono = time.time()
+        print("labyrinthe généré en", fin_chrono - début_chrono, "secondes")
         return self.tab
+
+
+    # --------------------------------------------------------------------------------------------------------------------------------------------------------------- #
+
 
     def est_entoure_de_chemins(self, i, j):
         """
         Vérifie si la case est entourée de chemins.
+
+        paramètre:
+        - i : la ligne du tableau
+        - j : la colonne du tableau
+
+        return:
+        - True si tout les voisins de i et j sont égals a 0 sinon False
         """
         return all(self.tab[x][y] == 0 for x, y in [(i+1, j), (i-1, j), (i, j+1), (i, j-1)])
+
+
+    # --------------------------------------------------------------------------------------------------------------------------------------------------------------- #
+
 
     def est_entoure_de_murs(self, i, j):
         """
         Vérifie si la case est entourée de murs.
+
+        paramètre:
+        - i : la ligne du tableau
+        - j : la colonne du tableau
+
+        return:
+        - True si tout les voisins de i et j sont égals a 1 sinon False
         """
-        return all(self.tab[x][y] == 1 for x, y in [(i+1, j), (i-1, j), (i, j+1), (i, j-1)])
+        return all(self.tab[x][y] == 1 for x, y in [(i+1, j), (i-1, j), (i, j+1), (i, j-1)]) 
 
 
 

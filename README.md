@@ -12,10 +12,11 @@ Tout ça affichait dans une fenêtre Tkinter.
 - [x] Afficher une page vierge.
 - [x] Faire un cadre où se trouve le labyrinthe.
 - [x] Afficher les murs.
-- [ ] Afficher l'entrée/sortie.
+- [x] Afficher l'entrée/sortie.
 - [ ] Afficher le plus court chemin avec la distance.
 - [ ] Afficher les autres chemins possibles avec leurs distances [Bonus].
-- [ ] Faire qu'on puisse générer et le résoudre depuis l'app avec des boutons [Bonus]
+- [x] Faire qu'on puisse générer avec un bouton [Bonus]
+- [ ] Faire qu'on puisse le résoudre depuis l'app avec des boutons [Bonus]
 #### Mur :
 - [x] Créer des murs sur toutes les cases du tableau de 25x25.
 - [x] Définir une entrée et une sortie.

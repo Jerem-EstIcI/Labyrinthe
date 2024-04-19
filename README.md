@@ -3,7 +3,7 @@
 Le but est de creer un labyrinthe en utilisant des éléments vus en cours de terminale comme les piles, File, Graphe etc... \
 Une fois crée le but est de trouver le chemin le plus court pour sortir du labyrinthe. \
 Tout ça affichait dans une fenêtre Tkinter.
-
+---
 ## Roadmap
 
 ### Creer le Labyrinthe
@@ -30,13 +30,18 @@ Tout ça affichait dans une fenêtre Tkinter.
 - [ ] Dire le plus court chemin avec les noms ou valeurs des points traversé.
 - [ ] Afficher le plus court chemin
 - [ ] Avoir en combien de temps la sortie a était trouvé [Bonus].
-
+---
 ## Informations
-
 ### Création du labyrinthe
 **Les murs peuvent être définis de la manière suivante :**
 
-- **Soit par des listes** \
+- **Par des listes** \
 `lab=[0,1,1,0,0,1,1,0,1,1,1,1,0,0,1,1,1,1,0,0,0,1,1,0,1],[etc...]` \
 ![Image Labyrinthe liste](/img/exemple_lab_liste.png "Labyrinthe avec liste"). \
-où les "1" correspondent à un mur (représenté par du rouge),"0" à un chemin,"2" l'entrée et "3" la sortie. 
+où les "1" correspondent à un mur (représenté par du rouge),"0" à un chemin,"2" l'entrée et "3" la sortie.
+
+### Résolution du labyrinthe
+Le labyrinthe va être résolu à l'aide d'une recherche du plus court chemin, en numérotant à partir du points de départ la distance entre chaque case représentant un chemin, depuis la case de départ.  \
+![Image Labyrinthe liste distances](/img/exemple_lab_distances.png "Labyrinthe liste distances"). \
+Puis partir du point d'arrivée et suivre les nombres inférieurs à la distance où on se trouve jusqu'à arriver à 0 et l'afficher.  \
+![Image Labyrinthe liste distances chemin](/img/exemple_lab_distances_chemin.png "Labyrinthe liste distances chemin"). \

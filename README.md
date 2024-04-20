@@ -17,15 +17,17 @@ Tout ça affichait dans une fenêtre Tkinter.
 - [ ] Afficher les autres chemins possibles avec leurs distances [Bonus].
 - [x] Faire qu'on puisse générer avec un bouton [Bonus]
 - [ ] Faire qu'on puisse le résoudre depuis l'app avec des boutons [Bonus]
+- [ ] Pouvoir gérer la grandeur du labyrinthe à générer sans devoir modifier le code [Bonus]
 #### Mur :
 - [x] Créer des murs sur toutes les cases du tableau de 25x25.
 - [x] Définir une entrée et une sortie.
 - [x] Casser certains murs de façons aléatoires.
-- [x] Casser des murs pour atteindre la sortie en passant le plus possible par les murs déjà cassés.
-- [ ] Faire qu'il n'y est pas de chemins inutiles
-- [ ] Faire qu'il n'y est pas de murs inutiles
-- [ ] Faire plusieurs sorties possibles [Bonus].
+- [x] Faire qu'il n'y est pas de chemins inutiles
+- [x] Faire qu'il n'y est pas de murs inutiles
+- [ ] Toujours un chemin entre l'entrée et la sortie
+- [x] Faire plusieurs sorties possibles [Bonus].
 - [x] Avoir le temps de création du labyrinthe [Bonus].
+
 ### Recherche du plus court chemin dans le graphe :
 - [ ] Dire le plus court chemin avec les noms ou valeurs des points traversé.
 - [ ] Afficher le plus court chemin

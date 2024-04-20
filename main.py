@@ -16,23 +16,24 @@ canvas = Canvas(app, width=0, height=0)  # Initialiser le canevas avec une taill
 canvas.pack()
 
 def affiche_lab():
-    gen = GenLab(25) # GenLab(dimension)
+    dim=25 # dimension du labyrinthe (max lisible 101)
+    gen = GenLab(dim) # GenLab(dimension)
     labyrinthe = gen.dessine_lab()
 
-    canvas.config(width=len(labyrinthe[0]) * 20, height=len(labyrinthe) * 20)
+    canvas.config(width=len(labyrinthe[0]) * 500//dim, height=len(labyrinthe) * 500//dim)
     canvas.delete("all")  # Effacer tout ce qui est dessiné précédemment sur le canevas
 
     # Parcours du labyrinthe pour dessiner les murs et les espaces
     for i in range(len(labyrinthe)):
         for j in range(len(labyrinthe[i])):
             if labyrinthe[i][j] == 1:
-                canvas.create_rectangle(j * 20, i * 20, (j + 1) * 20, (i + 1) * 20, fill="black")
+                canvas.create_rectangle(j * 500//dim, i * 500//dim, (j + 1) * 500//dim, (i + 1) * 500//dim, fill="black")
             elif labyrinthe[i][j]==2:
-                canvas.create_rectangle(j * 20, i * 20, (j + 1) * 20, (i + 1) * 20, fill="green")
+                canvas.create_rectangle(j * 500//dim, i * 500//dim, (j + 1) * 500//dim, (i + 1) * 500//dim, fill="green")
             elif labyrinthe[i][j]==3:
-                canvas.create_rectangle(j * 20, i * 20, (j + 1) * 20, (i + 1) * 20, fill="red")
+                canvas.create_rectangle(j * 500//dim, i * 500//dim, (j + 1) * 500//dim, (i + 1) * 500//dim, fill="red")
             else:
-                canvas.create_rectangle(j * 20, i * 20, (j + 1) * 20, (i + 1) * 20, fill="white")
+                canvas.create_rectangle(j * 500//dim, i * 500//dim, (j + 1) * 500//dim, (i + 1) * 500//dim, fill="white")
 
 
 gen_button = Button(button_frame, text="Générer Labyrinthe", command=affiche_lab)

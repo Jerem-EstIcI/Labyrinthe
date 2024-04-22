@@ -2,7 +2,17 @@ from random import randint
 import time
 
 class GenLab:
+    '''
+    Génération d'un labyrinthe résolvable
+    '''
     def __init__(self, dim):
+        '''
+        paramètre:
+        - dim : dimension du labyrinthe
+        renvoie:
+        - zonedess : zone dessinable
+        - tab : grille crée par creer_lab
+        '''
         self.dim = dim
         self.zonedess = self.dim - 1
         self.tab = self.creer_lab()
@@ -65,7 +75,7 @@ class GenLab:
                     if self.tab[i][j]==0:
                         # si le nombre aléatoire est inférieur à 25 (entre 1 et 25)
                         if nb<=25:
-                            # on crée un préchemin horizontalement de préférence vers la droite 
+                            # on crée un préchemin horizontalement de préférence vers la droite
                             if i+1 < self.zonedess:
                                 self.tab[i+1][j]=5
                             # sinon vers la gauche
@@ -73,15 +83,15 @@ class GenLab:
                                 self.tab[i-1][j]=5
                         # sinon si le nombre aléatoire est inférieur à 50 (entre 26 et 50)
                         elif nb<=50:
-                            # on crée un préchemin verticale de préférence vers le bas 
+                            # on crée un préchemin verticale de préférence vers le bas
                             if j+1 < self.zonedess:
                                 self.tab[i][j+1]=5
                             # sinon vers le haut
                             elif j-1 > 0:
                                 self.tab[i][j-1]=5
-                        # sinon si le nombre aléatoire est inférieur à 75 (entre 51 et 75) 
+                        # sinon si le nombre aléatoire est inférieur à 75 (entre 51 et 75)
                         elif nb<=75:
-                            # on crée un préchemin horizontale de préférence vers la gauche 
+                            # on crée un préchemin horizontale de préférence vers la gauche
                             if i-1 > 0:
                                 self.tab[i-1][j]=5
                             # sinon vers la droite
@@ -89,7 +99,7 @@ class GenLab:
                                 self.tab[i+1][j]=5
                         # sinon le nombre aléatoire est inférieur à 100 (entre 76 et 100)
                         else:
-                            # on crée un préchemin verticale de préférence vers le haut 
+                            # on crée un préchemin verticale de préférence vers le haut
                             if j-1 > 0:
                                 self.tab[i][j-1]=5
                             # sinon vers le bas

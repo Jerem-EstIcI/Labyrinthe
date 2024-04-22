@@ -16,10 +16,15 @@ canvas = tk.Canvas(app, width=0, height=0)  # Initialiser le canevas avec une ta
 canvas.pack()
 
 def affiche_lab():
+    '''
+    Affiche le labyrinthe sur l'application tkinter
+    '''
     dim=25 # dimension du labyrinthe (max lisible 101)
     dimcanva=500/dim
+
     gen = GenLab(dim) # GenLab(dimension)
     labyrinthe = gen.dessine_lab()
+
 
     canvas.config(width=len(labyrinthe[0]) * dimcanva, height=len(labyrinthe) * dimcanva)
     canvas.delete("all")  # Effacer tout ce qui est dessiné précédemment sur le canvas
@@ -35,6 +40,8 @@ def affiche_lab():
                 canvas.create_rectangle(j * dimcanva, i * dimcanva, (j + 1) * dimcanva, (i + 1) * dimcanva, fill="red")
             else:
                 canvas.create_rectangle(j * dimcanva, i * dimcanva, (j + 1) * dimcanva, (i + 1) * dimcanva, fill="white")
+
+
 
 
 gen_button = tk.Button(button_frame, text="Générer Labyrinthe", command=affiche_lab)

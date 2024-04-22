@@ -8,7 +8,7 @@ class GenLab:
         self.tab = self.creer_lab()
 
 
-    # --------------------------------------------------------------------------------------------- #
+    # -------------------------------------------------------------------------------------------- #
 
 
     def creer_lab(self):
@@ -20,9 +20,9 @@ class GenLab:
         avec : 0 les chemins, 1 les murs, 2 l'entrée, 3 la sortie
         """
 
-        ### -------------------###
+
         # Création du labyrinthe #
-        ### -------------------###
+
 
         # création d'une grille carré de la dimension souhaité
         lab = [[1 for _ in range(self.dim)] for _ in range(self.dim)]
@@ -37,7 +37,7 @@ class GenLab:
         return lab
 
 
-    # --------------------------------------------------------------------------------------------- #
+    # -------------------------------------------------------------------------------------------- #
 
 
     def dessine_lab(self):
@@ -50,9 +50,9 @@ class GenLab:
         - tab : grille comportant le labyrinthe resolvable
         avec : 0 les chemins, 1 les murs, 2 l'entrée, 3 la sortie
         """
-        ###-----------------------------------------------------###
+
         # Création des chemins du labyrinthe de manière aléatoire #
-        ###-----------------------------------------------------###
+
         debut_chrono = time.time()
         # Pour un nombre de tour prédéfinit suffisant pour avoir un labyrinthe résolvable
         tour=0
@@ -65,30 +65,34 @@ class GenLab:
                     if self.tab[i][j]==0:
                         # si le nombre aléatoire est inférieur à 25 (entre 1 et 25)
                         if nb<=25:
-                            # on crée un préchemin horizontalement de préférence vers la droite sinon vers la gauche
+                            # on crée un préchemin horizontalement de préférence vers la droite 
                             if i+1 < self.zonedess:
                                 self.tab[i+1][j]=5
+                            # sinon vers la gauche
                             elif i-1 > 0:
                                 self.tab[i-1][j]=5
                         # sinon si le nombre aléatoire est inférieur à 50 (entre 26 et 50)
                         elif nb<=50:
-                            # on crée un préchemin verticale de préférence vers le bas sinon vers le haut
+                            # on crée un préchemin verticale de préférence vers le bas 
                             if j+1 < self.zonedess:
                                 self.tab[i][j+1]=5
+                            # sinon vers le haut
                             elif j-1 > 0:
                                 self.tab[i][j-1]=5
                         # sinon si le nombre aléatoire est inférieur à 75 (entre 51 et 75) 
                         elif nb<=75:
-                            # on crée un préchemin horizontale de préférence vers la gauche sinon vers la droite
+                            # on crée un préchemin horizontale de préférence vers la gauche 
                             if i-1 > 0:
                                 self.tab[i-1][j]=5
+                            # sinon vers la droite
                             elif i+1 < self.zonedess:
                                 self.tab[i+1][j]=5
                         # sinon le nombre aléatoire est inférieur à 100 (entre 76 et 100)
                         else:
-                            # on crée un préchemin verticale de préférence vers le haut sinon vers le bas
+                            # on crée un préchemin verticale de préférence vers le haut 
                             if j-1 > 0:
                                 self.tab[i][j-1]=5
+                            # sinon vers le bas
                             elif j+1 < self.zonedess:
                                 self.tab[i][j+1]=5
             tour+=1
@@ -105,47 +109,15 @@ class GenLab:
                 if self.tab[i][j]==5:
                     self.tab[i][j]=0
 
-        
         # comme on veux que 1 accès a la sortie si il y en a 2 on en supprime un des deux
-        if self.tab[self.zonedess-2][self.zonedess-1]==0 and self.tab[self.zonedess-1][self.zonedess-2]==0:
-            self.tab[self.zonedess-1][self.zonedess-2]=1
+        if self.tab[self.zonedess-2][self.zonedess-1]==0:
+            if self.tab[self.zonedess-1][self.zonedess-2]==0:
+                self.tab[self.zonedess-1][self.zonedess-2]=1
 
-        '''
-        ### ------------------------------------------------------------------------- ###
-        # Recherche / Création d'au moins 1 chemin possible pour résoudre le labyrinthe #
-        ### ------------------------------------------------------------------------- ###
-        
-        arrivee = self.tab[self.zonedess-1][self.zonedess-1]
-        ligne, colonne = 1, 1
-
-        # Tant qu'on est pas arrivé sur la case d'arrivé 
-        while self.tab[ligne][colonne] != arrivee:
-            # si la prochaine case horizontale est un chemin alors on avance a la prochaine case   
-            if ligne + 1 < self.zonedess and self.tab[ligne + 1][colonne] == 0:       
-                ligne += 1
-            # sinon si la prochaine case verticale est un chemin alors on avance a la prochaine case
-            elif colonne + 1 < self.zonedess and self.tab[ligne][colonne + 1] == 0: 
-                colonne += 1
-            # sinon si la prochaine case verticale est un murs on le remplace par un chemin et on avance a la prochaine case    
-            elif colonne + 1 < self.zonedess and self.tab[ligne][colonne + 1] == 1: 
-                self.tab[ligne][colonne + 1] = 0
-                colonne += 1
-            # sinon si la prochaine case horizontale est un murs on le remplace par un chemin et on avance a la prochaine case
-            elif ligne + 1 < self.zonedess and self.tab[ligne + 1][colonne] == 1: 
-                self.tab[ligne + 1][colonne] = 0
-                ligne += 1
-            # sinon si la prochaine case horizontale est l'arrivée alors on avance a la prochaine case
-            elif ligne + 1 < self.zonedess and self.tab[ligne + 1][colonne] == 3: 
-                ligne += 1
-            # sinon prochaine case verticale est l'arrivée alors on avance a la prochaine case
-            else: 
-                colonne += 1
-        '''
-
-        print("labyrinthe crée résolvable normalement",self.tab) # débug
+        print("labyrinthe crée résolvable normalement :",self.tab) # débug
         fin_chrono = time.time()
         print("labyrinthe généré en", fin_chrono - debut_chrono, "secondes")
         return self.tab
 
 
-    # --------------------------------------------------------------------------------------------- #
+    # -------------------------------------------------------------------------------------------- #

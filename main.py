@@ -1,5 +1,5 @@
 import tkinter as tk
-from gen_lab import *
+from gen_lab import GenLab
 
 # Création de la fenêtre tkinter
 app = tk.Tk()
@@ -17,23 +17,24 @@ canvas.pack()
 
 def affiche_lab():
     dim=25 # dimension du labyrinthe (max lisible 101)
+    dimcanva=500/dim
     gen = GenLab(dim) # GenLab(dimension)
     labyrinthe = gen.dessine_lab()
 
-    canvas.config(width=len(labyrinthe[0]) * 500//dim, height=len(labyrinthe) * 500//dim)
+    canvas.config(width=len(labyrinthe[0]) * dimcanva, height=len(labyrinthe) * dimcanva)
     canvas.delete("all")  # Effacer tout ce qui est dessiné précédemment sur le canvas
 
     # Parcours du labyrinthe pour dessiner les murs et les espaces
-    for i in range(len(labyrinthe)):
-        for j in range(len(labyrinthe[i])):
-            if labyrinthe[i][j] == 1:
-                canvas.create_rectangle(j * 500//dim, i * 500//dim, (j + 1) * 500//dim, (i + 1) * 500//dim, fill="black")
-            elif labyrinthe[i][j]==2:
-                canvas.create_rectangle(j * 500//dim, i * 500//dim, (j + 1) * 500//dim, (i + 1) * 500//dim, fill="green")
-            elif labyrinthe[i][j]==3:
-                canvas.create_rectangle(j * 500//dim, i * 500//dim, (j + 1) * 500//dim, (i + 1) * 500//dim, fill="red")
+    for i, ligne in enumerate(labyrinthe):
+        for j, case in enumerate(ligne):
+            if case == 1:
+                canvas.create_rectangle(j * dimcanva, i * dimcanva, (j + 1) * dimcanva, (i + 1) * dimcanva, fill="black")
+            elif case==2:
+                canvas.create_rectangle(j * dimcanva, i * dimcanva, (j + 1) * dimcanva, (i + 1) * dimcanva, fill="green")
+            elif case==3:
+                canvas.create_rectangle(j * dimcanva, i * dimcanva, (j + 1) * dimcanva, (i + 1) * dimcanva, fill="red")
             else:
-                canvas.create_rectangle(j * 500//dim, i * 500//dim, (j + 1) * 500//dim, (i + 1) * 500//dim, fill="white")
+                canvas.create_rectangle(j * dimcanva, i * dimcanva, (j + 1) * dimcanva, (i + 1) * dimcanva, fill="white")
 
 
 gen_button = tk.Button(button_frame, text="Générer Labyrinthe", command=affiche_lab)

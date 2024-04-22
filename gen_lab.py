@@ -67,12 +67,12 @@ class GenLab:
         # Pour un nombre de tour prédéfinit suffisant pour avoir un labyrinthe résolvable
         tour=0
         while tour<2:
-            for i in range(len(self.tab)):
-                for j in range(len(self.tab)):
+            for i, ligne in enumerate(self.tab):
+                for j, case in enumerate(ligne):
                     # on génère un nombre aléatoire entre 1 et 100
                     nb=randint(1,100)
                     # Si on est sur un chemin
-                    if self.tab[i][j]==0:
+                    if case==0:
                         # si le nombre aléatoire est inférieur à 25 (entre 1 et 25)
                         if nb<=25:
                             # on crée un préchemin horizontalement de préférence vers la droite
@@ -114,9 +114,9 @@ class GenLab:
         self.tab[self.zonedess - 1][self.zonedess - 1] = 3
 
         # On transforme les préchemin en chemin
-        for i in range(len(self.tab)):
-            for j in range(len(self.tab)):
-                if self.tab[i][j]==5:
+        for i, ligne in enumerate(self.tab):
+            for j, case in enumerate(ligne):
+                if case==5:
                     self.tab[i][j]=0
 
         # comme on veux que 1 accès a la sortie si il y en a 2 on en supprime un des deux

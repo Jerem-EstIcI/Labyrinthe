@@ -1,18 +1,18 @@
-from tkinter import *
+import tkinter as tk
 from gen_lab import *
 
 # Création de la fenêtre tkinter
-app = Tk()
+app = tk.Tk()
 app.title("Labyrinthe")
 app.geometry("800x550")
 app.resizable(False, False)
 
 # Création d'un cadre pour contenir les boutons
-button_frame = Frame(app)
-button_frame.pack(side=TOP)
+button_frame = tk.Frame(app)
+button_frame.pack(side=tk.TOP)
 
 # Création du canevas
-canvas = Canvas(app, width=0, height=0)  # Initialiser le canevas avec une taille arbitraire
+canvas = tk.Canvas(app, width=0, height=0)  # Initialiser le canevas avec une taille arbitraire
 canvas.pack()
 
 def affiche_lab():
@@ -21,7 +21,7 @@ def affiche_lab():
     labyrinthe = gen.dessine_lab()
 
     canvas.config(width=len(labyrinthe[0]) * 500//dim, height=len(labyrinthe) * 500//dim)
-    canvas.delete("all")  # Effacer tout ce qui est dessiné précédemment sur le canevas
+    canvas.delete("all")  # Effacer tout ce qui est dessiné précédemment sur le canvas
 
     # Parcours du labyrinthe pour dessiner les murs et les espaces
     for i in range(len(labyrinthe)):
@@ -36,11 +36,11 @@ def affiche_lab():
                 canvas.create_rectangle(j * 500//dim, i * 500//dim, (j + 1) * 500//dim, (i + 1) * 500//dim, fill="white")
 
 
-gen_button = Button(button_frame, text="Générer Labyrinthe", command=affiche_lab)
-gen_button.pack(side=LEFT, padx=5, pady=5)
+gen_button = tk.Button(button_frame, text="Générer Labyrinthe", command=affiche_lab)
+gen_button.pack(side=tk.LEFT, padx=5, pady=5)
 
-res_button = Button(button_frame, text="Résoudre Labyrinthe", command=affiche_lab)
-res_button.pack(side=LEFT, padx=5, pady=5)
+res_button = tk.Button(button_frame, text="Résoudre Labyrinthe", command=affiche_lab)
+res_button.pack(side=tk.LEFT, padx=5, pady=5)
 
 # Lancer la boucle principale de tkinter
 app.mainloop()

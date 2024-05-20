@@ -13,10 +13,11 @@ Tout ça affichait dans une fenêtre Tkinter.
 - [x] Faire un cadre où se trouve le labyrinthe.
 - [x] Afficher les murs.
 - [x] Afficher l'entrée/sortie.
-- [ ] Afficher le plus court chemin avec la distance.
+- [x] Afficher le plus court chemin
+- [ ] Afficher la distance du plus court chemin
 - [ ] Afficher les autres chemins possibles avec leurs distances [Bonus].
 - [x] Faire qu'on puisse générer avec un bouton [Bonus]
-- [ ] Faire qu'on puisse le résoudre depuis l'app avec des boutons [Bonus]
+- [x] Faire qu'on puisse le résoudre depuis l'app avec des boutons [Bonus]
 - [ ] Pouvoir gérer la grandeur du labyrinthe à générer sans devoir modifier le code [Bonus]
 #### Mur :
 - [x] Créer des murs sur toutes les cases du tableau de 25x25.
@@ -29,8 +30,8 @@ Tout ça affichait dans une fenêtre Tkinter.
 - [x] Avoir le temps de création du labyrinthe [Bonus].
 
 ### Recherche du plus court chemin dans le graphe :
-- [ ] Dire le plus court chemin avec les noms ou valeurs des points traversé.
-- [ ] Afficher le plus court chemin
+- [x] Dire le plus court chemin avec les noms ou valeurs des points traversé.
+- [x] Afficher le plus court chemin
 - [ ] Avoir en combien de temps la sortie a était trouvé [Bonus].
 ---
 ## Informations

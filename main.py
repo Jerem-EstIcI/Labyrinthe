@@ -17,7 +17,7 @@ canvas = tk.Canvas(app, width=0, height=0)  # Initialiser le canevas avec une ta
 canvas.pack()
 
 labyrinthe_global = None
-dim_global = 101 # dimension du labyrinthe (max lisible 101)
+dim_global = 25 # dimension du labyrinthe (max lisible 101)
 
 def affiche_lab():
     global labyrinthe_global, dim_global

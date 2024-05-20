@@ -29,7 +29,7 @@ def res_lab(lab, dim):
     reslab = longueur_lab(lab, dim)
     posx = dim - 2
     posy = dim - 2
-    if reslab[posx][posy]==3:
+    if reslab[posx][posy]==3 or reslab[posx][posy]==5:
         return 
     while not (posx == 1 and posy == 1):
         if reslab[posx-1][posy] == reslab[posx][posy] - 1:

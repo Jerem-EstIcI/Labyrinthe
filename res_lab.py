@@ -15,7 +15,7 @@ def longueur_lab(lab, dim):
                     elif j < dim - 1 and lab[i][j+1] >= 10:
                         lab[i][j] = lab[i][j+1] + 1
         nbfois+=1
-    print("labyrinthe avec longueur :",lab)
+    print("labyrinthe avec une longueur du plus court chemin de:",lab[dim-2][dim-2]-10,"avec:",lab)
     return lab
 
 def lab_forme(lab,dim):
@@ -29,8 +29,10 @@ def res_lab(lab, dim):
     reslab = longueur_lab(lab, dim)
     posx = dim - 2
     posy = dim - 2
-    if reslab[posx][posy]==3 or reslab[posx][posy]==5:
-        return 
+    if reslab[posx][posy]==3 or reslab[posx][posy]==5: #erreur dans la création du labyrinthe 
+                                                       #ou dans la création de la longueur des pts
+
+        return reslab
     while not (posx == 1 and posy == 1):
         if reslab[posx-1][posy] == reslab[posx][posy] - 1:
             reslab[posx][posy] = 5

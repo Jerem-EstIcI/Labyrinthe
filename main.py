@@ -13,7 +13,7 @@ button_frame = tk.Frame(app)
 button_frame.pack(side=tk.TOP)
 
 # Création du canevas
-canvas = tk.Canvas(app, width=0, height=0)  # Initialiser le canevas avec une taille arbitraire
+canvas = tk.Canvas(app, width=0, height=0)  # initialiser le canevas avec une taille arbitraire
 canvas.pack()
 
 labyrinthe_global = None
@@ -31,9 +31,9 @@ def affiche_lab():
 
 
     canvas.config(width=len(labyrinthe_global[0]) * dimcanva, height=len(labyrinthe_global) * dimcanva)
-    canvas.delete("all")  # Effacer tout ce qui est dessiné précédemment sur le canvas
+    canvas.delete("all")  # effacer tout ce qui est dessiné précédemment sur le canvas
 
-    # Parcours du labyrinthe pour dessiner les murs et les espaces
+    # parcours du labyrinthe pour dessiner les murs et les espaces
     for i, ligne in enumerate(labyrinthe_global):
         for j, case in enumerate(ligne):
             if case == 1:
@@ -55,6 +55,9 @@ def resoudre_lab():
     canvas.delete("all")  # Effacer tout ce qui est dessiné précédemment sur le canvas
 
     # Parcours du labyrinthe pour dessiner les murs et les espaces
+    labyrinthe_global[1][1]=2
+    labyrinthe_global[dim_global-2][dim_global-2]=3
+
     for i, ligne in enumerate(lab_resolu):
         for j, case in enumerate(ligne):
             if case == 1:
@@ -64,7 +67,7 @@ def resoudre_lab():
             elif case==3:
                 canvas.create_rectangle(j * dimcanva, i * dimcanva, (j + 1) * dimcanva, (i + 1) * dimcanva, fill="red")
             elif case==5:
-                canvas.create_rectangle(j * dimcanva, i * dimcanva, (j + 1) * dimcanva, (i + 1) * dimcanva, fill="purple")
+                canvas.create_rectangle(j * dimcanva, i * dimcanva, (j + 1) * dimcanva, (i + 1) * dimcanva, fill="lime")
             else:
                 canvas.create_rectangle(j * dimcanva, i * dimcanva, (j + 1) * dimcanva, (i + 1) * dimcanva, fill="white")
 

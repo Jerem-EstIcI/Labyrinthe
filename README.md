@@ -18,7 +18,7 @@ Tout ça affichait dans une fenêtre Tkinter.
 - [ ] Afficher les autres chemins possibles avec leurs distances [Bonus].
 - [x] Faire qu'on puisse générer avec un bouton [Bonus]
 - [x] Faire qu'on puisse le résoudre depuis l'app avec des boutons [Bonus]
-- [ ] Pouvoir gérer la grandeur du labyrinthe à générer sans devoir modifier le code [Bonus]
+- [x] Pouvoir gérer la grandeur du labyrinthe à générer sans devoir modifier le code [Bonus]
 #### Mur :
 - [x] Créer des murs sur toutes les cases du tableau de 25x25.
 - [x] Définir une entrée et une sortie.

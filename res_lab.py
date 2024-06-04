@@ -30,8 +30,6 @@ def res_lab(lab, dim):
     posx = dim - 2
     posy = dim - 2
     if reslab[posx][posy]==3 or reslab[posx][posy]==5: #erreur dans la création du labyrinthe 
-                                                       #ou dans la création de la longueur des pts
-
         return reslab
     while not (posx == 1 and posy == 1):
         if reslab[posx-1][posy] == reslab[posx][posy] - 1:

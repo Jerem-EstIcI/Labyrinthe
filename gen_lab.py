@@ -107,27 +107,36 @@ class GenLab:
                                 self.tab[i][j+1]=5
             tour+=1
 
-
-        # debut en haut a gauche
-        self.tab[1][1] = 2
-        # fin en bas a droite
-        self.tab[self.zonedess - 1][self.zonedess - 1] = 3
-
         # On transforme les préchemin en chemin
         for i, ligne in enumerate(self.tab):
             for j, case in enumerate(ligne):
                 if case==5:
                     self.tab[i][j]=0
 
-        # comme on veux que 1 accès a la sortie si il y en a 2 on en supprime un des deux
-        if self.tab[self.zonedess-2][self.zonedess-1]==0:
-            if self.tab[self.zonedess-1][self.zonedess-2]==0:
-                self.tab[self.zonedess-1][self.zonedess-2]=1
+        # on évite les carrés de chemins
+        for i in range(len(self.tab)-2):
+            for j in range(len(self.tab)-2):
+                if self.tab[i][j]==0 and self.tab[i+1][j]==0 and self.tab[i+2][j]==0 and self.tab[i][j+1]==0 and self.tab[i][j+2]==0 and self.tab[i+2][j+1]==0 and self.tab[i+2][j+2]==0 and self.tab[i+1][j+2]==0:
+                    u=randint(1,4)
+                    if u==1:
+                        self.tab[i+1][j]=1 
+                    elif u==2:
+                        self.tab[i][j+1]=1 
+                    elif u==3:
+                        self.tab[i+2][j+1]=1 
+                    else:
+                        self.tab[i+1][j+2]=1 
+
+        # debut en haut a gauche
+        self.tab[1][1] = 2
+        # fin en bas a droite
+        self.tab[self.zonedess - 1][self.zonedess - 1] = 3
 
         print("labyrinthe crée résolvable normalement :",self.tab) # débug
         fin_chrono = time.time()
-        print("labyrinthe généré en", fin_chrono - debut_chrono, "secondes")
-        return self.tab
+        tempsgen=fin_chrono - debut_chrono
+        print("labyrinthe généré en",tempsgen, "secondes")
+        return self.tab,tempsgen
 
 
     # -------------------------------------------------------------------------------------------- #

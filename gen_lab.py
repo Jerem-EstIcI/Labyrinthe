@@ -1,21 +1,36 @@
-from random import randint
+from random import randint,seed
 import time
+import hashlib
 
 class GenLab:
     '''
     Génération d'un labyrinthe résolvable
     '''
-    def __init__(self, dim):
+    def __init__(self, dim, seed_value=None):
         '''
         paramètre:
         - dim : dimension du labyrinthe
+        - seed_value : (facultatif) seed pour la génération aléatoireZ
         renvoie:
         - zonedess : zone dessinable
-        - tab : grille crée par creer_lab
+        - tab : grille créée par creer_lab
         '''
         self.dim = dim
         self.zonedess = self.dim - 1
+        self.seed_value = seed_value
+        
+        # Utilisation de la seed pour la génération si donné
+        if self.seed_value is not None:
+            seed(self.seed_value)
+        
+        # Génération du labyrinthe
         self.tab = self.creer_lab()
+        
+        # Si aucune seed on génère une seed à partir du labyrinthe
+        if self.seed_value is None:
+            self.generated_seed = self.generate_seed()
+        else:
+            self.generated_seed = self.seed_value  # Si une seed est donnée, on la garde
 
 
     # -------------------------------------------------------------------------------------------- #
@@ -49,6 +64,15 @@ class GenLab:
 
     # -------------------------------------------------------------------------------------------- #
 
+    def generate_seed(self):
+        """
+        Crée une seed unique basée sur la configuration du labyrinthe généré
+        """
+        lab_string = ''.join(str(cell) for row in self.tab for cell in row)  # Convertir le labyrinthe en une chaîne
+        seed = int(hashlib.md5(lab_string.encode()).hexdigest(), 16)  # Hasher en MD5 puis la convertir en entier
+        return seed
+
+    # -------------------------------------------------------------------------------------------- #
 
     def dessine_lab(self):
         """
@@ -137,6 +161,5 @@ class GenLab:
         tempsgen=fin_chrono - debut_chrono
         print("labyrinthe généré en",tempsgen, "secondes")
         return self.tab,tempsgen
-
 
     # -------------------------------------------------------------------------------------------- #

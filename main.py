@@ -16,6 +16,7 @@ labyrinthe_global = None
 dim_global = tk.IntVar(value=25)  # Valeur de la dimension de base : 25
 longueur_var = tk.StringVar()  # Variable longeur du labyrinthe
 temps_var = tk.StringVar() # Variable temps du labyrinthe
+seed_global = tk.StringVar(value="") # Variable seed du labyrinthe : par défaut vide
 
 def affiche_lab():
     global labyrinthe_global
@@ -23,22 +24,30 @@ def affiche_lab():
     Affiche le labyrinthe sur l'application tkinter
     '''
     dim = dim_global.get()
+    seed_value = seed_global.get()  # Récupère la seed entrée par l'utilisateur
+    
+    if seed_value:
+        seed_value = int(seed_value)  # Convertir la seed en entier si écrite
+    else:
+        seed_value = None  # Pas de seed alors génération aléatoire
+    
     dimcanva = 500 / dim
-    gen = GenLab(dim)
-    labyrinthe_global,temps_generation = gen.dessine_lab()
-    temps_generation=round(temps_generation*10000)
-    temps_generation=temps_generation/10000
+    gen = GenLab(dim, seed_value=seed_value)  # Donner la seed pour générer le labyrinthe
+    
+    labyrinthe_global, temps_generation = gen.dessine_lab()
+    temps_generation = round(temps_generation * 10000) / 10000
 
     longueur_var.set(f"Longueur: N/A")
     temps_var.set(f"Temps de génération du labyrinthe : {temps_generation} secondes")
 
-    # Mettre à jour la taille du canevas
+    # Afficher la seed générée
+    if not seed_value:
+        seed_global.set(str(gen.generated_seed))  # Afficher la seed générée
+
+    # Mise à jour de l'affichage du labyrinthe sur le canvas
     canvas.config(width=len(labyrinthe_global[0]) * dimcanva, height=len(labyrinthe_global) * dimcanva)
     canvas.delete("all")  # Effacer tout ce qui est dessiné précédemment sur le canvas
 
-    #labyrinthe_global[1][1] = 2
-    #labyrinthe_global[dim - 2][dim - 2] = 3
-    
     # Parcours du labyrinthe pour dessiner les murs et les espaces
     for i, ligne in enumerate(labyrinthe_global):
         for j, case in enumerate(ligne):
@@ -89,13 +98,19 @@ def resoudre_lab():
             else:
                 canvas.create_rectangle(j * dimcanva, i * dimcanva, (j + 1) * dimcanva, (i + 1) * dimcanva, fill="white")
 
-# Zone des Boutons et de l'étiquette pour afficher la longueur
+# Zone des Boutons et de l'étiquette pour afficher la longueur et la seed
 button_frame = tk.Frame(app)
 button_frame.pack(side=tk.TOP, pady=10)
 
 dimensions = [15, 25, 35, 45, 55, 65, 75, 85, 95, 105]
 dim_menu = tk.OptionMenu(button_frame, dim_global, *dimensions)
 dim_menu.pack(side=tk.LEFT, padx=5)
+
+# Champ d'entrée pour la seed
+seed_label = tk.Label(button_frame, text="Seed :")
+seed_label.pack(side=tk.LEFT, padx=5)
+seed_entry = tk.Entry(button_frame, textvariable=seed_global)
+seed_entry.pack(side=tk.LEFT, padx=5)
 
 gen_button = tk.Button(button_frame, text="Générer Labyrinthe", command=affiche_lab)
 gen_button.pack(side=tk.LEFT, padx=5)

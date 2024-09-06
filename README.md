@@ -19,7 +19,7 @@ Tout ça affichait dans une fenêtre Tkinter.
 - [x] Faire qu'on puisse générer avec un bouton [Bonus]
 - [x] Faire qu'on puisse le résoudre depuis l'app avec des boutons [Bonus]
 - [x] Pouvoir gérer la grandeur du labyrinthe à générer sans devoir modifier le code [Bonus]
-#### Mur :
+#### Mur & Chemins:
 - [x] Créer des murs sur toutes les cases du tableau de 25x25.
 - [x] Définir une entrée et une sortie.
 - [x] Casser certains murs de façons aléatoires.
@@ -28,6 +28,9 @@ Tout ça affichait dans une fenêtre Tkinter.
 - [ ] Toujours un chemin entre l'entrée et la sortie
 - [x] Faire plusieurs sorties possibles [Bonus].
 - [x] Avoir le temps de création du labyrinthe [Bonus].
+#### Seed:
+- [x] Créer des labyrinthe suivant une seed
+- [x] Afficher la seed
 
 ### Recherche du plus court chemin dans le graphe :
 - [x] Dire le plus court chemin avec les noms ou valeurs des points traversé.
